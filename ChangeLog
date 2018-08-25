@@ -1,0 +1,105 @@
+31.12.2017 (1.0.1)
+- small fixes to compile on older KF5 versions
+- fix double creation of SysTray icon
+
+02.01.2017 (1.0)
+- Ported to KF5
+- configurable shortcuts
+- context menu in tree allowing direct opening/deletion of files and dirs
+- allow to show/hide hidden files
+
+22.07.2012 (0.8)
+- Add dirpath wildcard filters to skip complete directories
+
+05.03.2011 (0.7.1)
+- Fix KDE3 -> KDE4 port by no longer using no longer existing KProcess signal.
+- Show better error message in case of non-local target in non-interactive mode
+
+14.6.2010 (0.7)
+- Add Incremental Backup functionality
+- Add wildcard filter to ignore files for backup matching a filename pattern
+
+15.5.2010 (0.6.4)
+- When an error occurs while reading a file (e.g. corrupted filesystem), cancel backup
+
+25.09.2009 (0.6.3)
+- When running in non interactive mode (e.g. cron), do not use KIO but only direct file access
+  as KIO needs a KDE session and $DISPLAY
+  This now makes the slice-reduction on the local target dir work.
+
+05.09.2009 (0.6.2)
+- Fix handling of disk-full situation (and a crash with it)
+
+01.07.2009 (0.6.1)
+- Avoid backup of the backup file
+- make it compile with KDE Version < 4.2
+
+24.05.2009 (0.6)
+- Port to cmake and KDE4/Qt4, which also removes the 4GB limit per file
+- sort hidden files/dirs before normal ones
+- show dimmed icon for hidden files (like konqueror)
+- don't allow to expand symlinked dirs as the content is not archived but only the link
+- Add "Save As..." menu and store name of loaded profile, so that a save directly writes to that
+- Add --autobg <profile> commandline which starts kbackup without a GUI e.g. for cron, at, ...
+- Add --verbose commandline option which allows to see all files when using --autobg
+- When the upload fails for a slice, offer a way to select a temporarily different target
+- if target-dir does not exist, create it (mkdir -p)
+- # of kept backups on target dir (per profile)
+- show list of created archive slices in finish-dialog
+
+19.01.2008 (0.5.4)
+- correctly limit slice size:
+  - limited by the target directory (when we store directly into a local dir)
+  - limited by the "tmp" dir when we create a tmp file for later upload via KIO
+  - limited by Qt3 (4GB on 32bit)
+  - limited by user defined maxSliceMBs
+- sort directories first in treeview
+- correctly sort by size and timestamp in treeview
+- check if a file that is archived into the backup is not the backup itself
+
+6.10.2007 (0.5.3)
+- Add russian handbook (thanks to Alexey Kouznetsov)
+- show symbolic links with an overlayed "link" icon
+- fix handling of files larger than 2GB
+- avoid crash when writing special files (below /proc) which have fileSize == 0
+
+16.8.2007
+- Added spanish translation (thanks to Gerardo Bueno)
+
+17.June 2007 (0.5.2)
+- start with the HOME folder opened
+- add a profile option to avoid media change dialog
+- add a profile option to avoid compressing files at all
+
+21.Dec. 2006
+- Whenever a directory is only partly included, show it with blue color
+- Show a dialog when the backup has finished
+- automatically save/restore window size
+- add "auto" commandline option to automatically start a backup
+  and quit kbackup when done.
+- added predefined slice sizes (for CDs, DVDs) in profile settings dialog
+- added portuguese translation thanks to Carlos Gonçalves
+
+1.Oct 2006 (0.5.1)
+- added "recent files" action
+- add profile setting to define a maximum slice size
+- store recent directory for file dialog
+
+24.Sept 2006 (0.5)
+- added systray functionality
+- added profile setting to define file-prefix
+- fixed Umlaut encoding for directories
+
+16.Sept 2006 (0.4.2):
+- added russian GUI translation (thanks to Alexey Kouznetsov)
+- added italian GUI translation (thanks to Andrea Sciucca)
+
+3.Sept 2006 (0.4.1):
+- added german handbook
+- added french GUI translation (thanks to Régis FLORET)
+- added missing "unlimited" translation string
+- added the RPM .spec file
+- added missing .mo translation files into RPM
+
+31.Aug 2006:
+- first release as 0.4
