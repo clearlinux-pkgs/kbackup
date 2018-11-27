@@ -6,19 +6,20 @@
 #
 Name     : kbackup
 Version  : 18.08.0
-Release  : 1
+Release  : 2
 URL      : https://download.kde.org/stable/applications/18.08.0/src/kbackup-18.08.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.08.0/src/kbackup-18.08.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.08.0/src/kbackup-18.08.0.tar.xz.sig
 Summary  : kbackup is an application which lets you back up your data in a simple, user friendly way.
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: kbackup-bin
-Requires: kbackup-data
-Requires: kbackup-license
-Requires: kbackup-locales
+Requires: kbackup-bin = %{version}-%{release}
+Requires: kbackup-data = %{version}-%{release}
+Requires: kbackup-license = %{version}-%{release}
+Requires: kbackup-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules shared-mime-info
 BuildRequires : shared-mime-info
 
 %description
@@ -42,8 +43,8 @@ Included Languages:
 %package bin
 Summary: bin components for the kbackup package.
 Group: Binaries
-Requires: kbackup-data
-Requires: kbackup-license
+Requires: kbackup-data = %{version}-%{release}
+Requires: kbackup-license = %{version}-%{release}
 
 %description bin
 bin components for the kbackup package.
@@ -89,18 +90,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535194964
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1543346808
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535194964
+export SOURCE_DATE_EPOCH=1543346808
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kbackup
-cp COPYING %{buildroot}/usr/share/doc/kbackup/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/kbackup
+cp COPYING %{buildroot}/usr/share/package-licenses/kbackup/COPYING
 pushd clr-build
 %make_install
 popd
@@ -125,7 +126,7 @@ popd
 /usr/share/icons/hicolor/32x32/mimetypes/text-x-kbp.png
 /usr/share/kxmlgui5/kbackup/kbackupui.rc
 /usr/share/metainfo/org.kde.kbackup.appdata.xml
-/usr/share/mime/packages/kbackup.xml
+/usr/share/mime-packages/kbackup.xml
 
 %files doc
 %defattr(0644,root,root,0755)
@@ -146,8 +147,8 @@ popd
 /usr/share/doc/HTML/uk/kbackup/mainwindow.png
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kbackup/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kbackup/COPYING
 
 %files locales -f kbackup.lang
 %defattr(-,root,root,-)
