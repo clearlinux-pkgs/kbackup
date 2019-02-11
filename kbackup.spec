@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kbackup
-Version  : 18.08.0
-Release  : 2
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kbackup-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kbackup-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kbackup-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 3
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kbackup-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kbackup-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kbackup-18.12.2.tar.xz.sig
 Summary  : kbackup is an application which lets you back up your data in a simple, user friendly way.
 Group    : Development/Tools
 License  : GPL-2.0
@@ -20,7 +20,6 @@ Requires: kbackup-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules shared-mime-info
-BuildRequires : shared-mime-info
 
 %description
 KBackup is a program that lets you back up any directories or files,
@@ -83,22 +82,22 @@ locales components for the kbackup package.
 
 
 %prep
-%setup -q -n kbackup-18.08.0
+%setup -q -n kbackup-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543346808
+export SOURCE_DATE_EPOCH=1549862484
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1543346808
+export SOURCE_DATE_EPOCH=1549862484
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kbackup
 cp COPYING %{buildroot}/usr/share/package-licenses/kbackup/COPYING
