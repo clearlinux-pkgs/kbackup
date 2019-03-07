@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kbackup
-Version  : 18.12.2
-Release  : 4
-URL      : https://download.kde.org/stable/applications/18.12.2/src/kbackup-18.12.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.2/src/kbackup-18.12.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.2/src/kbackup-18.12.2.tar.xz.sig
-Summary  : kbackup is an application which lets you back up your data in a simple, user friendly way.
+Version  : 18.12.3
+Release  : 5
+URL      : https://download.kde.org/stable/applications/18.12.3/src/kbackup-18.12.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.3/src/kbackup-18.12.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.3/src/kbackup-18.12.3.tar.xz.sig
+Summary  : A program that lets you back up any directories or files
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: kbackup-bin = %{version}-%{release}
@@ -82,22 +82,23 @@ locales components for the kbackup package.
 
 
 %prep
-%setup -q -n kbackup-18.12.2
+%setup -q -n kbackup-18.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549881100
+export SOURCE_DATE_EPOCH=1551985300
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549881100
+export SOURCE_DATE_EPOCH=1551985300
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kbackup
 cp COPYING %{buildroot}/usr/share/package-licenses/kbackup/COPYING
