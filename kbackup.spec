@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kbackup
-Version  : 19.12.0
-Release  : 17
-URL      : https://download.kde.org/stable/release-service/19.12.0/src/kbackup-19.12.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.0/src/kbackup-19.12.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.0/src/kbackup-19.12.0.tar.xz.sig
+Version  : 19.12.1
+Release  : 18
+URL      : https://download.kde.org/stable/release-service/19.12.1/src/kbackup-19.12.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.1/src/kbackup-19.12.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.1/src/kbackup-19.12.1.tar.xz.sig
 Summary  : A program that lets you back up any directories or files
 Group    : Development/Tools
 License  : GPL-2.0
@@ -82,15 +82,15 @@ locales components for the kbackup package.
 
 
 %prep
-%setup -q -n kbackup-19.12.0
-cd %{_builddir}/kbackup-19.12.0
+%setup -q -n kbackup-19.12.1
+cd %{_builddir}/kbackup-19.12.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576547420
+export SOURCE_DATE_EPOCH=1578603842
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -107,10 +107,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1576547420
+export SOURCE_DATE_EPOCH=1578603842
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kbackup
-cp %{_builddir}/kbackup-19.12.0/COPYING %{buildroot}/usr/share/package-licenses/kbackup/4778e718b2212917a612ca048ce876fb95dfa04e
+cp %{_builddir}/kbackup-19.12.1/COPYING %{buildroot}/usr/share/package-licenses/kbackup/4778e718b2212917a612ca048ce876fb95dfa04e
 pushd clr-build
 %make_install
 popd
