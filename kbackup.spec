@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kbackup
-Version  : 22.04.2
-Release  : 42
-URL      : https://download.kde.org/stable/release-service/22.04.2/src/kbackup-22.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.04.2/src/kbackup-22.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.04.2/src/kbackup-22.04.2.tar.xz.sig
+Version  : 22.04.3
+Release  : 43
+URL      : https://download.kde.org/stable/release-service/22.04.3/src/kbackup-22.04.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.3/src/kbackup-22.04.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.3/src/kbackup-22.04.3.tar.xz.sig
 Summary  : kbackup is an application which lets you back up your data in a simple, user friendly way.
 Group    : Development/Tools
 License  : GPL-2.0
@@ -95,15 +95,15 @@ man components for the kbackup package.
 
 
 %prep
-%setup -q -n kbackup-22.04.2
-cd %{_builddir}/kbackup-22.04.2
+%setup -q -n kbackup-22.04.3
+cd %{_builddir}/kbackup-22.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654837441
+export SOURCE_DATE_EPOCH=1657571335
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -119,10 +119,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654837441
+export SOURCE_DATE_EPOCH=1657571335
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kbackup
-cp %{_builddir}/kbackup-22.04.2/COPYING %{buildroot}/usr/share/package-licenses/kbackup/4778e718b2212917a612ca048ce876fb95dfa04e
+cp %{_builddir}/kbackup-22.04.3/COPYING %{buildroot}/usr/share/package-licenses/kbackup/4778e718b2212917a612ca048ce876fb95dfa04e
 pushd clr-build
 %make_install
 popd
